@@ -1,0 +1,6 @@
+# astrofeed_lib @ git+https://github.com/bluesky-astronomy/astrofeed-lib  # assumed to be installed locally in edit mode
+pandas>=2.0,<3.0
+matplotlib>=3.5,<3.6
+numpy>1.21,<2.0
+pyarrow
+ipykernel
