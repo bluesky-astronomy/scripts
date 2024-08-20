@@ -50,10 +50,28 @@ def migrate_2024_08_05():
     )
 
 
+def migrate_2024_08_20():
+    """Tasks for migration on 05/08/2024"""
+    migrator = MySQLMigrator(db)
+
+    migrate(
+        # Add an index on DID - is stupid that there isn't one
+        migrator.add_index("account", ("did",), unique=False),
+        migrator.add_index("account", ("is_valid",), unique=False),
+        migrator.add_index("post", ("author",), unique=False),
+        migrator.add_index("post", ("indexed_at",), unique=False),
+        migrator.add_index("post", ("feed_all",), unique=False),
+        migrator.add_index("post", ("feed_astro",), unique=False),
+        migrator.add_index("post", ("feed_exoplanets",), unique=False),
+        migrator.add_index("post", ("feed_astrophotos",), unique=False),
+    )
+
+
 if __name__ == "__main__":
     print_current_database_model()
     # migrate_2024_06_22()
-    migrate_2024_08_05()
+    # migrate_2024_08_05()
+    migrate_2024_08_20()
     # print_current_database_model()
 
 
