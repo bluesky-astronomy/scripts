@@ -14,8 +14,12 @@ Mods cannot act on mod levels higher than them.
 """
 
 
+# "did : level" dict of feed moderators, sorted by level and then alphabetically.
 MODERATORS = {
-    "did:plc:jcoy7v3a2t4rcfdh6i4kza25": 5  # emily.space
+    "did:plc:jcoy7v3a2t4rcfdh6i4kza25": 5,  # emily.space
+    "did:plc:iaterevirjtn4sh2o2ykqyak": 1,  # celtuk.bsky.social (Chris Rolland)
+    "did:plc:4kb66qy7xqqprdeopyzwvlms": 1,  # kwcookastro.bsky.social (Kyle Cook)
+    "did:plc:4aa2mtfyjewhfg7uinr7hti4": 1,  # mpoessel.de (Markus Pössel)
 }
 
 
