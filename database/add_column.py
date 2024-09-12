@@ -1,6 +1,13 @@
 """Tool for adding a column(s) to the database."""
 
-from astrofeed_lib.database import db, Account, Post, SubscriptionState, BotActions, ModActions
+from astrofeed_lib.database import (
+    db,
+    Account,
+    Post,
+    SubscriptionState,
+    BotActions,
+    ModActions,
+)
 from playhouse.migrate import migrate, MySQLMigrator, IntegerField, BooleanField
 from playhouse.reflection import print_model
 
@@ -28,7 +35,6 @@ def migrate_2024_06_22():
     migrate(
         # Add an index on DID - is stupid that there isn't one
         # migrator.add_index("account", ("did",), unique=False),
-
         # Add a moderator level field & index it
         migrator.add_column("account", "mod_level", mod_level),
     )
@@ -44,7 +50,6 @@ def migrate_2024_08_05():
     migrate(
         # Add an index on DID - is stupid that there isn't one
         # migrator.add_index("account", ("did",), unique=False),
-
         # Add a moderator level field & index it
         migrator.add_column("botactions", "authorized", authorized),
     )
@@ -67,14 +72,73 @@ def migrate_2024_08_20():
     )
 
 
+def migrate_2024_09_12():
+    """Tasks for migration on 12/09/2024"""
+    migrator = MySQLMigrator(db)
+
+    migrate(
+        migrator.add_column(
+            "post",
+            "feed_cosmology",
+            BooleanField(null=False, index=True, default=False),
+        ),
+        migrator.add_column(
+            "post",
+            "feed_extragalactic",
+            BooleanField(null=False, index=True, default=False),
+        ),
+        migrator.add_column(
+            "post",
+            "feed_highenergy",
+            BooleanField(null=False, index=True, default=False),
+        ),
+        migrator.add_column(
+            "post",
+            "feed_instrumentation",
+            BooleanField(null=False, index=True, default=False),
+        ),
+        migrator.add_column(
+            "post",
+            "feed_methods",
+            BooleanField(null=False, index=True, default=False),
+        ),
+        migrator.add_column(
+            "post",
+            "feed_milkyway",
+            BooleanField(null=False, index=True, default=False),
+        ),
+        migrator.add_column(
+            "post",
+            "feed_planetary",
+            BooleanField(null=False, index=True, default=False),
+        ),
+        migrator.add_column(
+            "post",
+            "feed_radio",
+            BooleanField(null=False, index=True, default=False),
+        ),
+        migrator.add_column(
+            "post",
+            "feed_stellar",
+            BooleanField(null=False, index=True, default=False),
+        ),
+        migrator.add_column(
+            "post",
+            "feed_education",
+            BooleanField(null=False, index=True, default=False),
+        ),
+        migrator.add_column(
+            "post",
+            "feed_history",
+            BooleanField(null=False, index=True, default=False),
+        ),
+    )
+
+
 if __name__ == "__main__":
     print_current_database_model()
     # migrate_2024_06_22()
     # migrate_2024_08_05()
-    migrate_2024_08_20()
+    # migrate_2024_08_20()
+    migrate_2024_09_12()
     # print_current_database_model()
-
-
-    
-
-    
