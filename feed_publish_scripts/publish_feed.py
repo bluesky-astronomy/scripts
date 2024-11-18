@@ -100,6 +100,13 @@ FEEDS = {
     #     "DESCRIPTION": "",
     #     "AVATAR_PATH": AVATAR_LOCATIONS / "",
     # },
+
+    # MAINTENANCE PURPOSES
+    "signup": {
+        "DISPLAY_NAME": "Astrofeed Signups",
+        "DESCRIPTION": "A feed for Astronomy feed moderators that shows users waiting to sign up to the feed.",
+        "AVATAR_PATH": AVATAR_LOCATIONS / "questions.jpg",
+    },
 }
 
 # If SERVICE_DID is defined
@@ -154,6 +161,10 @@ def get_client():
 
 if __name__ == "__main__":
     client = get_client()
+    # Upload all:
     for feed in FEEDS:
         upload_feed(feed, client=client)
         time.sleep(1)  # Just to be less spammy
+
+    # Upload just one:
+    # upload_feed('signup', client=client)
