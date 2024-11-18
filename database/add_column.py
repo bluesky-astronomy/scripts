@@ -8,8 +8,9 @@ from astrofeed_lib.database import (
     BotActions,
     ModActions,
 )
-from playhouse.migrate import migrate, MySQLMigrator, IntegerField, BooleanField
+from playhouse.migrate import migrate, MySQLMigrator, IntegerField, BooleanField, DateTimeField
 from playhouse.reflection import print_model
+from datetime import datetime
 
 
 def print_current_database_model():
@@ -135,10 +136,25 @@ def migrate_2024_09_12():
     )
 
 
+def migrate_2024_11_18():
+    """Add an extra column to BotActions."""
+    migrator = MySQLMigrator(db)
+
+    migrate(
+        migrator.add_column(
+            "botactions",
+            "checked_at",
+            DateTimeField(null=False, index=True, default=datetime.utcnow),
+        ),
+    )
+
+
+
 if __name__ == "__main__":
     print_current_database_model()
     # migrate_2024_06_22()
     # migrate_2024_08_05()
     # migrate_2024_08_20()
-    migrate_2024_09_12()
+    # migrate_2024_09_12()
+    migrate_2024_11_18()
     # print_current_database_model()
