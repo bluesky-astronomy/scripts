@@ -26,7 +26,7 @@ MODERATORS = {
     "did:plc:54qsxdbgcjs47qqm7phoapyn": 1,  # epsori.bsky.social (Jerry)
     "did:plc:32jhd3zbo5zlj5yc5lcyf7rt": 1,  # kellylepo.bsky.social (Kelly)
     "did:plc:toptt6pljgctu63uwv26yb2w": 1,  # nrutkowski.bsky.social (Nathaniel )
-    "did:plc:jcedpw4itvgtr42x4nizr33w": 1,  # naztronomy.bsky.social (Naz)
+    "did:plc:3onxpfju7s54whvncinjcywc": 1,  # naztrono.my (Naz)
     # "did:plc:mspg53rhq553n65o5fa7gyrf": 1,  # cosmicrami.com (Rami)
     "did:plc:w6m2zca3mkact4znrc55gfdl": 1,  # spacemarschall.net (Raphael)
 }
