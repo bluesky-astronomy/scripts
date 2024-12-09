@@ -20,15 +20,15 @@ MODERATORS = {
     "did:plc:iaterevirjtn4sh2o2ykqyak": 3,  # celtuk.bsky.social (Chris)
     "did:plc:4kb66qy7xqqprdeopyzwvlms": 3,  # kwcookastro.bsky.social (Kyle)
     "did:plc:4aa2mtfyjewhfg7uinr7hti4": 3,  # mpoessel.de (Markus)
-    # "did:plc:curm4ncx66fzzygplesli77a": 1,  # jamiezvirzdin.com (Jamie)
+    "did:plc:curm4ncx66fzzygplesli77a": 1,  # jamiezvirzdin.com (Jamie)
     "did:plc:3wghkixdyfxcdqjw6bpnsn6b": 1,  # noelstoj.bsky.social (Jake N)
     "did:plc:uzecijkzuq4b7yjiwdg4b52i": 1,  # jakepost.tech (Jake P)
     "did:plc:54qsxdbgcjs47qqm7phoapyn": 1,  # epsori.bsky.social (Jerry)
-    # "did:plc:32jhd3zbo5zlj5yc5lcyf7rt": 1,  # kellylepo.bsky.social (Kelly)
+    "did:plc:32jhd3zbo5zlj5yc5lcyf7rt": 1,  # kellylepo.bsky.social (Kelly)
     "did:plc:toptt6pljgctu63uwv26yb2w": 1,  # nrutkowski.bsky.social (Nathaniel )
     "did:plc:jcedpw4itvgtr42x4nizr33w": 1,  # naztronomy.bsky.social (Naz)
     # "did:plc:mspg53rhq553n65o5fa7gyrf": 1,  # cosmicrami.com (Rami)
-    # "did:plc:w6m2zca3mkact4znrc55gfdl": 1,  # spacemarschall.net (Raphael)
+    "did:plc:w6m2zca3mkact4znrc55gfdl": 1,  # spacemarschall.net (Raphael)
 }
 
 
