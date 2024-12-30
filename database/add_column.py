@@ -149,6 +149,49 @@ def migrate_2024_11_18():
     )
 
 
+def migrate_2024_12_30():
+    """Add some extra columns for moderation use."""
+    migrator = MySQLMigrator(db)
+
+    migrate(
+        migrator.add_column(
+            "post",
+            "hidden",
+            BooleanField(null=False, index=True, default=False),
+        ),
+        migrator.add_column(
+            "account",
+            "is_muted",
+            BooleanField(null=False, index=True, default=False),
+        ),
+        migrator.add_column(
+            "account",
+            "is_banned",
+            BooleanField(null=False, index=True, default=False),
+        ),
+        migrator.add_column(
+            "account",
+            "hidden_count",
+            IntegerField(null=False, index=False, default=0),
+        ),
+        migrator.add_column(
+            "account",
+            "warned_count",
+            IntegerField(null=False, index=False, default=0),
+        ),
+        migrator.add_column(
+            "account",
+            "muted_count",
+            IntegerField(null=False, index=False, default=0),
+        ),
+        migrator.add_column(
+            "account",
+            "banned_count",
+            IntegerField(null=False, index=False, default=0),
+        ),
+    )
+
+
 
 if __name__ == "__main__":
     print_current_database_model()
@@ -156,5 +199,6 @@ if __name__ == "__main__":
     # migrate_2024_08_05()
     # migrate_2024_08_20()
     # migrate_2024_09_12()
-    migrate_2024_11_18()
+    # migrate_2024_11_18()
+    migrate_2024_12_30()
     # print_current_database_model()
