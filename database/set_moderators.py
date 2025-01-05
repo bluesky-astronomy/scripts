@@ -1,6 +1,11 @@
 """Sets the moderators on the feed"""
 
-from astrofeed_lib.database import Account
+from astrofeed_lib.database import (
+    Account,
+    setup_connection,
+    get_database,
+    teardown_connection,
+)
 
 """DESCRIPTION OF MOD LEVELS:
 
@@ -27,7 +32,7 @@ MODERATORS = {
     "did:plc:32jhd3zbo5zlj5yc5lcyf7rt": 2,  # kellylepo.bsky.social (Kelly)
     "did:plc:toptt6pljgctu63uwv26yb2w": 2,  # nrutkowski.bsky.social (Nathaniel )
     "did:plc:3onxpfju7s54whvncinjcywc": 2,  # naztrono.my (Naz)
-    # "did:plc:mspg53rhq553n65o5fa7gyrf": 1,  # cosmicrami.com (Rami)
+    "did:plc:mspg53rhq553n65o5fa7gyrf": 1,  # cosmicrami.com (Rami)
     "did:plc:w6m2zca3mkact4znrc55gfdl": 2,  # spacemarschall.net (Raphael)
 }
 
@@ -42,7 +47,9 @@ def print_current_moderators(min_level=1):
 
 def update_moderators():
     print("Executing update...")
-    for user in Account.select().where(Account.did << list(MODERATORS.keys())).execute():
+    for user in (
+        Account.select().where(Account.did << list(MODERATORS.keys())).execute()
+    ):
         if user.mod_level != MODERATORS[user.did]:
             print("Updating", user.handle)
             user.mod_level = MODERATORS[user.did]
@@ -52,6 +59,7 @@ def update_moderators():
 
 
 if __name__ == "__main__":
+    setup_connection(get_database())
     print("Current moderators:")
     print_current_moderators()
     print("")
@@ -59,3 +67,4 @@ if __name__ == "__main__":
     print("")
     print("New moderators:")
     print_current_moderators()
+    teardown_connection(get_database())
