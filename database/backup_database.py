@@ -15,6 +15,7 @@ import pandas as pd
 
 
 outdir = Path("../data/database_backup")
+outdir.mkdir(exist_ok=True, parents=True)
 
 
 # Sadly there's no easy way to do this with peewee...
