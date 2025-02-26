@@ -192,6 +192,34 @@ def migrate_2024_12_30():
     )
 
 
+def migrate_2025_02_26():
+    """Add some extra columns for moderation use."""
+    migrator = MySQLMigrator(db)
+
+    migrate(
+        migrator.add_column(
+            "post",
+            "likes",
+            IntegerField(null=False, index=False, default=0),
+        ),
+        migrator.add_column(
+            "post",
+            "feed_research",
+            BooleanField(null=False, index=True, default=False),
+        ),
+        migrator.add_column(
+            "post",
+            "feed_solar",
+            BooleanField(null=False, index=True, default=False),
+        ),
+        migrator.add_column(
+            "post",
+            "feed_questions",
+            BooleanField(null=False, index=True, default=False),
+        ),
+    )
+
+
 
 if __name__ == "__main__":
     print_current_database_model()
@@ -200,5 +228,6 @@ if __name__ == "__main__":
     # migrate_2024_08_20()
     # migrate_2024_09_12()
     # migrate_2024_11_18()
-    migrate_2024_12_30()
+    # migrate_2024_12_30()
+    # migrate_2025_02_26()
     # print_current_database_model()
