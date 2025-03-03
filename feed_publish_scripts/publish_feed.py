@@ -15,7 +15,7 @@ SERVICE_DID: str = ""  # Only use this if you want a service did different from 
 FEEDS = {
     "astro-all": {
         "DISPLAY_NAME": "Astrosky",
-        "DESCRIPTION": "All posts from the astronomy community on Bluesky. Signup to post here via @bot.astronomy.blue",
+        "DESCRIPTION": "All posts from the astronomy community on Bluesky. Sign up to post here via @bot.astronomy.blue",
         "AVATAR_PATH": AVATAR_LOCATIONS / "astro-all.jpg",
     },
     "astro": {
@@ -27,6 +27,11 @@ FEEDS = {
         "DISPLAY_NAME": "Astrophotography",
         "DESCRIPTION": "Astrophotography posts, from astrophotographers! Part of the Astronomy feeds network.\nAstronomers can sign up to post here via @bot.astronomy.blue\nContains posts from signed up users with #astrophotography or #astrophotos.\nPosts here are also included in the main Astronomy feed.",
         "AVATAR_PATH": AVATAR_LOCATIONS / "astrophotos.jpg",
+    },
+    "research": {
+        "DISPLAY_NAME": "AstroSci",
+        "DESCRIPTION": "Posts about astronomy research on Bluesky! Includes posts from all the subtopic feeds.\nAstronomers can sign up to post here via @bot.astronomy.blue\nSigned up users can post to this specific feed with a ☄️ or #astrosci.\nPosts here are also included in the main Astronomy feed.",
+        "AVATAR_PATH": AVATAR_LOCATIONS / "research.jpg",
     },
     # ASTRONOMY TOPICS
     "cosmology": {
@@ -55,13 +60,13 @@ FEEDS = {
         "AVATAR_PATH": AVATAR_LOCATIONS / "instrumentation.jpg",
     },
     "methods": {
-        "DISPLAY_NAME": "Methods for Astronomy",
+        "DISPLAY_NAME": "Astro Software & Methods",
         "DESCRIPTION": "A feed to discuss methods and software for astronomy research! Part of the Astronomy feeds network.\nAstronomers can sign up to post here via @bot.astronomy.blue\nContains posts from signed up users with #astromethods, #astrocoding, or #astrocode.", #\nPosts here are also included in the main Astronomy feed.",
         "AVATAR_PATH": AVATAR_LOCATIONS / "methods.jpg",
     },
     "milkyway": {
         "DISPLAY_NAME": "The Milky Way",
-        "DESCRIPTION": "A science-oriented feed about our galaxy (and everything that orbits it). Part of the Astronomy feeds network.\nAstronomers can sign up to post here via @bot.astronomy.blue\nContains posts from signed up users with #milkyway.\nPosts here are also included in the main Astronomy feed.",
+        "DESCRIPTION": "A science-oriented feed about Galactic astronomy. Part of the Astronomy feeds network.\nAstronomers can sign up to post here via @bot.astronomy.blue\nContains posts from signed up users with #galactic or #galacticastro.\nPosts here are also included in the main Astronomy feed.",
         "AVATAR_PATH": AVATAR_LOCATIONS / "milkyway.jpg",
     },
     "planetary": {
@@ -74,14 +79,14 @@ FEEDS = {
         "DESCRIPTION": "A science-oriented feed about radio astronomy! Part of the Astronomy feeds network.\nAstronomers can sign up to post here via @bot.astronomy.blue\nContains posts from signed up users with #radioastronomy or #radioastro.\nPosts here are also included in the main Astronomy feed.",
         "AVATAR_PATH": AVATAR_LOCATIONS / "radio.jpg",
     },
-    # "solar": {
-    #     "DISPLAY_NAME": "",
-    #     "DESCRIPTION": "",
-    #     "AVATAR_PATH": AVATAR_LOCATIONS / "",
-    # },
+    "solar": {
+        "DISPLAY_NAME": "Heliophysics (Astro)",
+        "DESCRIPTION": "A science-oriented feed about heliophysics! Part of the Astronomy feeds network.\nAstronomers can sign up to post here via @bot.astronomy.blue\nContains posts from signed up users with #heliophysics or #solarastro.\nPosts here are also included in the main Astronomy feed.",
+        "AVATAR_PATH": AVATAR_LOCATIONS / "solar.jpg",
+    },
     "stellar": {
         "DISPLAY_NAME": "Stellar Astronomy",
-        "DESCRIPTION": "A science-oriented feed about stars! Part of the Astronomy feeds network.\nAstronomers can sign up to post here via @bot.astronomy.blue\nContains posts from signed up users with #stars, #stellarastrononomy or #stellarastro.\nPosts here are also included in the main Astronomy feed.",
+        "DESCRIPTION": "A science-oriented feed about stars! Part of the Astronomy feeds network.\nAstronomers can sign up to post here via @bot.astronomy.blue\nContains posts from signed up users with #stellarastrononomy or #stellarastro.\nPosts here are also included in the main Astronomy feed.",
         "AVATAR_PATH": AVATAR_LOCATIONS / "stellar.jpg",
     },
     # ASTRONOMY / OTHER
@@ -95,11 +100,11 @@ FEEDS = {
         "DESCRIPTION": "A feed about the history of astronomy and astrophysics! Part of the Astronomy feeds network.\nAstronomers can sign up to post here via @bot.astronomy.blue\nContains posts from signed up users with #astrohistory or #historyofastronomy.\nPosts here are also included in the main Astronomy feed.",
         "AVATAR_PATH": AVATAR_LOCATIONS / "history.jpg",
     },
-    # "questions": {
-    #     "DISPLAY_NAME": "",
-    #     "DESCRIPTION": "",
-    #     "AVATAR_PATH": AVATAR_LOCATIONS / "",
-    # },
+    "questions": {
+        "DISPLAY_NAME": "Ask an Astronomer!",
+        "DESCRIPTION": "Ask astronomers on Bluesky your burning questions by tagging your post with #AskAnAstronomer!\nAnyone can post here, although only your most recent question from the last 24 hours will show up.\nPosts made here must follow the rules at https://rules.astronomy.blue",
+        "AVATAR_PATH": AVATAR_LOCATIONS / "questions.jpg",
+    },
 
     # MAINTENANCE PURPOSES
     "signup": {
@@ -162,9 +167,9 @@ def get_client():
 if __name__ == "__main__":
     client = get_client()
     # Upload all:
-    for feed in FEEDS:
-        upload_feed(feed, client=client)
-        time.sleep(1)  # Just to be less spammy
+    # for feed in FEEDS:
+    #     upload_feed(feed, client=client)
+    #     time.sleep(1)  # Just to be less spammy
 
     # Upload just one:
-    # upload_feed('signup', client=client)
+    upload_feed('methods', client=client)
